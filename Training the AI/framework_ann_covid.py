@@ -11,7 +11,7 @@ tf.__version__
 # Importing the dataset
 dataset = pd.read_csv('symptom_frequency.csv') # Enter dataset (Not done)
 X = dataset.iloc[:,:20].values # Explanatory variables (Not done)
-y = dataset.iloc[:,20:].values # Response variable (Not done)
+y = dataset.iloc[:, -1].values # Response variable (Not done)
 #print(X)
 #print(y)
 
@@ -20,14 +20,23 @@ y = dataset.iloc[:,20:].values # Response variable (Not done)
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 i = 0
+
 for i in range(20):
     X[:,i] = le.fit_transform(X[:,i])
     i += 1
-print(X)
 
 le_2 = LabelEncoder()
 
-y[:,0] = le_2.fit_transform(y[:,0])
+y[:] = le_2.fit_transform(y[:])
+
+# TRANSFORMING TO INT64 and FLOAT64
+# y = object -> y = int64
+y = np.array([y], dtype = np.int64)
+y = y[-1, :]
+
+# X = object -> X = float64
+X = np.array([X], dtype = np.float64)
+X = X[-1, :]
 
 # One Hot Encoding the categorical column with more than two categories
 #from sklearn.compose import ColumnTransformer
@@ -46,6 +55,14 @@ y[:,0] = le_2.fit_transform(y[:,0])
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+
+# From Numpy array to Tensorflow tensor 
+
+#X_train = tf.convert_to_tensor(X_train)
+#X_test = tf.convert_to_tensor(X_test)
+
+#y_train = tf.convert_to_tensor(y_train)
+#y_test = tf.convert_to_tensor(y_test)
 
 # Part 2 - Building the ANN
 
@@ -67,7 +84,7 @@ ann.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
 ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 # Training the ANN on the Training set
-ann.fit(X_train, y_train, batch_size = 32, epochs = 100)
+ann.fit(X_train, y_train, batch_size = 32, epochs = 10)
 
 # Part 4 - Making the predictions and evaluating the model
 
