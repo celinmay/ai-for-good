@@ -72,7 +72,7 @@ ann.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
 ann.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 # Training the ANN on the Training set
-ann.fit(X_train, y_train, batch_size = 32, epochs = 100)
+ann.fit(X_train, y_train, batch_size = 32, epochs = 10)
 
 
 
@@ -80,7 +80,7 @@ ann.fit(X_train, y_train, batch_size = 32, epochs = 100)
 
 # Predicting the Test set results
 y_pred = ann.predict(X_test)
-y_pred = (y_pred > 0.5)
+# y_pred = (y_pred > 0.5) MAYBE LEAVE THIS PART OUT, SO WE GET PROBABILITIES 
 print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
 
 
@@ -90,11 +90,12 @@ cm = confusion_matrix(y_test, y_pred)
 print(cm)
 
 
-# Correct vs wrong
+# Correct vs wrong, index of wrongs to compare what went wrong 
 ii = 0
 correct = 0
 wrong = 0
 index_of_wrongs = []
+
 
 for j in y_pred:
     if j == True and y_test[ii] == 1:
