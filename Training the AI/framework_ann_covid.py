@@ -11,9 +11,9 @@ tf.__version__
 # Part 1 - Data Preprocessing__________________________________________________
 
 # Importing the dataset
-dataset = pd.read_csv('symptom_frequency.csv') # Enter dataset (Not done)
-X = dataset.iloc[:,:20].values # Explanatory variables (Not done)
-y = dataset.iloc[:, -1].values # Response variable (Not done)
+dataset = pd.read_csv('symptom_frequency.csv') # Enter dataset
+X = dataset.iloc[:,:20].values # Explanatory variables
+y = dataset.iloc[:, -1].values # Response variable
 #print(X)
 #print(y)
 
@@ -24,7 +24,7 @@ from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 i = 0
 
-# X's 
+# X's
 for i in range(20):
     X[:,i] = le.fit_transform(X[:,i])
     i += 1
@@ -90,7 +90,7 @@ cm = confusion_matrix(y_test, y_pred)
 print(cm)
 
 
-# Correct vs wrong 
+# Correct vs wrong
 ii = 0
 correct = 0
 wrong = 0
