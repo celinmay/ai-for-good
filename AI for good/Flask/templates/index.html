@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+
+  <body>
+      <h1>What COVID symptoms do you have?</h1>
+      <p>
+          <form action="/data" method="POST">
+            {%for symptom, i in symptoms.items() %} 
+            <input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br/>
+            {%endfor%}
+        <br>
+        <input type="submit" onclick="myFunction()" value="Run analysis">
+        <br><br>
+        <input type="text" id="analysis" size="50">
+        </form>
+      </p>
+
+      <script>
+        function myFunction() {
+          var symptom = document.forms[0];
+          var txt = "";
+          var i;
+          for (i = 0; i < symptom.length; i++) {
+            if (symptom[i].checked) {
+              txt = txt + symptom[i].value + " ";
+            }
+          }
+          document.getElementById("analysis").value = "You have following symptoms: " + txt;
+        }
+        </script>
+
+
+  </body>

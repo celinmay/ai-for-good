@@ -30,13 +30,14 @@ def index():
     return render_template("index.html")
 
 @app.route('/data', methods=["GET", "POST"])
-def data():
-    if request.method == 'POST':
-        file = request.form['symptom1']
-        data = pd.read_excel(file)
-        return render_template('data.html', data=data.to_html())
-    
-    
+def data_form():
+    if request.method == "POST":
+ 
+    checked=request.form['symptoms']
+    with open('checked.txt', 'w') as file:
+        file.write("%s"%checked)
+    return checked
+
 #Execute server
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
