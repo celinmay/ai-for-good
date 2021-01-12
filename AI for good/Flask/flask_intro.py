@@ -15,10 +15,11 @@ def index():
 def myFunction():
     if request.method == 'POST':
         symptomsList= request.form.getlist('symptom')
-        for i in symptomsList:
+
+        for i in range(len(symptomsList)):
             if i in symptomsList: 
-                symptomsList[i] = 1
-          
+                symptomsList[i] = int(symptomsList[1])
+         
 
         fieldnames = ['symptom', 'symptom']   
         
