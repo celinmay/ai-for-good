@@ -3,6 +3,7 @@ from tensorflow import keras
 from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf 
 import numpy as np
+from keras.models import load_model
 import pandas as pd
 import csv
 
