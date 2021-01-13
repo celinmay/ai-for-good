@@ -28,13 +28,6 @@ def myFunction():
 
         #for s in symptomsList: 
         for i in range(len(symptomsList)):
-            # if you are looping through symptomsList, then every element here
-            # will be in that list, the if condition isn't needed
-
-            # however you need to be able to access the symptoms dictionary, James
-            #sugested adding a function that wll return it, so added that at time commented out
-            # and where you ould use it, line 23 and line 16 instead of line 17
-
             #if i in symptomsList: #not needed
 
             # here you want to edit the dictionary not symptomsList
