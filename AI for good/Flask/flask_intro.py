@@ -57,11 +57,18 @@ def myFunction():
             writer.writerow(symptoms)
             return render_template("index.html", symptoms = symptoms)
 
+
+# Importing the dataset
+dataset = pd.read_csv('data.csv') # Enter dataset
+X = dataset.iloc[:,:20].values # Explanatory variables
+
 # Load model 
 loaded_ann = keras.models.load_model('Covid_model')
 
 # Trying it out
 y_pred = loaded_ann.predict(X)
+
+print(y_pred)
 
 #Execute server
 if __name__ == '__main__':
