@@ -39,7 +39,7 @@ def myFunction():
             #    symptomsList[i] = int(symptomsList[1])
 
 
-        fieldnames = ['symptom', 'symptom']
+            fieldnames = ['symptom', 'symptom']
 
         with open('data.csv', 'a') as inFile:
             writer = csv.DictWriter(inFile, fieldnames=symptoms.keys())
@@ -56,8 +56,8 @@ def myFunction():
                # writer.writerow(valueString)
            
             # symptomsList is a list, and cannot be appended like that I belive try the above method
-            writer.writerow({'symptom': symptomsList})
-            return render_template("index.html")
+            writer.writerow(symptoms)
+            return render_template("index.html", symptoms = symptoms)
 
 
 #Execute server

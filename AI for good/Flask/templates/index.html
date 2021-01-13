@@ -6,9 +6,20 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
-  <body>
-    <section id="test">
-      <h1>What COVID symptoms do you have?</h1>
+<body class="d-flex h-100 text-center text-white bg-info">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <div>
+        <h3 class="float-md-start mb-0">COVID METER</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link active" aria-current="page" href="#">Take the test</a>
+          <a class="nav-link" href="#">Information</a>
+          <a class="nav-link" href="#">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main class="px-3"></main>
+      <h2>What COVID symptoms do you have?</h2>
       <p>
           <form action="/data" method="POST">
             {%for symptom, i in symptoms.items() %} 
@@ -20,7 +31,9 @@
         <input type="text" id="analysis" size="50">
         </form>
       </p>
-    </section>
+    </main>
+
+
       <script>
         function myFunction() {
           var symptom = document.forms[0];
