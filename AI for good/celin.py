@@ -22,8 +22,8 @@ def myFunction():
         symptoms = fetchSymptoms()
         symptomsList= request.form.getlist('symptom')
 
-        #for s in symptomsList: 
-        for i in range(len(symptomsList)):
+        for s in symptomsList: 
+        #for i in range(len(symptomsList)):
             # if you are looping through symptomsList, then every element here
             # will be in that list, the if condition isn't needed
 
@@ -34,29 +34,29 @@ def myFunction():
             #if i in symptomsList: #not needed
 
             # here you want to edit the dictionary not symptomsList
-            #symptoms[s] = 1 # if you used the canged loop
-            symptoms[symptomsList[i]] = 1 # if you use range loop
+            symptom[s] = 1 # if you used the canged loop
+            #symptom[symptomsList[s]] = 1 # if you use range loop
             #    symptomsList[i] = int(symptomsList[1])
 
 
         fieldnames = ['symptom', 'symptom']
 
         with open('data.csv', 'a') as inFile:
-            writer = csv.DictWriter(inFile, fieldnames=symptoms.keys())
+            writer = csv.DictWriter(inFile, fieldnames=fieldnames)
             # here you need a loop to gothrough each element in dictionary
             # loop through symptoms.keys()
             
-           # valueString = ''
-            #for key, val in symptoms.items():
+            valueString = ''
+            for key, val in symptoms.items():
                     # write 0 to 1 to file
-            #    writer.writerow(val)
+                writer.writerow(value)
                     # or if you need the values to be a single row then concatenate them to a string
-               # valueString = valueString + format(val)
+                    # valueString = valueString + val
                 # and write the 0 and 1 to to the file
-               # writer.writerow(valueString)
+               #writer.writerow(valueString)
            
             # symptomsList is a list, and cannot be appended like that I belive try the above method
-            writer.writerow({'symptoms': symptomsList})
+            writer.writerow({'symptom': symptomsList})
             return render_template("index.html")
 
 
