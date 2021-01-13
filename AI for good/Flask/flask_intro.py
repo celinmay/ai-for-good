@@ -56,7 +56,7 @@ def myFunction():
                # writer.writerow(valueString)
            
             # symptomsList is a list, and cannot be appended like that I belive try the above method
-            writer.writerow({'symptoms': symptomsList})
+            writer.writerow({'symptom': symptomsList})
             return render_template("index.html")
 
 
