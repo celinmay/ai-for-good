@@ -1,7 +1,11 @@
 from flask import Flask, jsonify, request, render_template
+from tensorflow import keras
+from sklearn.preprocessing import LabelEncoder
+import tensorflow as tf 
 import numpy as np
 import pandas as pd
 import csv
+
 
 app = Flask(__name__)
 
@@ -59,6 +63,11 @@ def myFunction():
             writer.writerow(symptoms)
             return render_template("index.html", symptoms = symptoms)
 
+# Load model 
+loaded_ann = keras.models.load_model('Covid_model')
+
+# Trying it out
+y_pred = loaded_ann.predict(X)
 
 #Execute server
 if __name__ == '__main__':
