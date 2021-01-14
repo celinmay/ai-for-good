@@ -60,7 +60,10 @@ def myFunction():
 
 # Importing the dataset
 dataset = pd.read_csv('data.csv') # Enter dataset
-X = dataset.iloc[:,:20].values # Explanatory variables
+# X
+X = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+X = np.array([X], dtype = np.float64)
+X = np.reshape(X, (-1,20))
 
 # Load model 
 loaded_ann = keras.models.load_model('Covid_model')
