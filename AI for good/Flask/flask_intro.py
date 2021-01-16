@@ -5,7 +5,7 @@ import tensorflow as tf
 import numpy as np
 from keras.models import load_model
 import pandas as pd
-from run_ann import loaded_ann
+#from run_ann import loaded_ann
 import csv
 
 
@@ -43,11 +43,9 @@ def myFunction():
 
 @app.route("/results", methods=['GET'])
 def results():
-    #data = request.get_json(force=True)
-    #prediction = model.predict([np.array(list(data.values()))])
-
+    print(y_pred)
   
-    return render_template("results.html", predictions=predictions)
+    return render_template("index.html")
 
 
 # Importing the dataset
