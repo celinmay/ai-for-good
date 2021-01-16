@@ -5,7 +5,6 @@ import tensorflow as tf
 import numpy as np
 from keras.models import load_model
 import pandas as pd
-#from run_ann import loaded_ann
 import csv
 
 
