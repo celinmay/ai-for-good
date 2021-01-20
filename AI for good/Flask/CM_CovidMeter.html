@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="CM_CovidMeter.css">
+</head>
+
+<body>
+	<div class="CM_Header_CovidMeter">
+		<p id="CM_Header_CovidMeter_P">CovidMeter by AI for Good</p>
+	</div>
+	<nav role="navigation">
+		<div id="menuToggle">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<span></span>
+			<ul id="menu">
+				<a href="CM_Home.html"><li>Home</li></a>
+				<a href="CM_CovidMeter.html"><li>Try CovidMeter</li></a>
+				<a href="CM_Disclaimer.html"><li>Disclaimer</li></a>
+				<a href="CM_About.html"><li>About Us</li></a>
+
+			</ul>
+		</div>
+	</nav>
+
+	<h1>What COVID symptoms do you have?</h1>
+	<div class="UpperBodyCovidMeter">
+
+
+		<form id="symptomschecker" action="/data" method="POST">
+
+			<div class="step step-1 active">
+				<div class="tab">
+					<h2>How does it work?</h2>
+					<p>Our model works on a machine learning model which has been fed with X datasets to calculate the chance of a person being tested positive with a certain combination of symptoms.</p>
+					<p>By clicking next you confirm that you read and accept the disclaimer</p>
+					<button type="button" class="next-btn">Next</button>
+				</div>
+			</div>
+
+			<div class="step step-2">
+				<h2>Please tick syptoms</h2>
+				<div class="tab">
+
+					
+					<div class="symptoms">
+			
+						<!-- {%for symptom, i in symptoms.items() %} -->
+						<input type="checkbox" name="breatingProblem" id="breatingProblem" value="{{symptom}}">
+						<label for="breathingProblem">Breathing Problem</label>
+						<!--{%endfor%} -->
+						<input type="checkbox" name="fever" id="fever" value="{{symptom}}">
+						<label id="fever">Fever</label>
+						<input type="checkbox" name="drycough" id="drycough" value="{{symptom}}">
+						<label id="drycough">Dry Cough</label>
+					</div>
+					
+					<button type="button" class="next-btn">Next</button>
+					<button type="button" class="previous-btn">Previous</button>
+					<!-- <br> -->
+					<!--<input type="submit" onclick="myFunction()" value="Run analysis">-->
+					<!-- <br><br> -->
+					<!-- <input type="text" id="analysis" size="50"> -->
+				</div>
+			</div>
+
+			<div class="step step-3">
+				<div class="tab">
+					<h2>Please tick syptoms</h2>
+					<div class="symptoms">
+
+						<!-- {%for symptom, i in symptoms.items() %} -->
+						<input type="checkbox" name="sorethroat" id="sorethroat" value="{{symptom}}">
+						<label for="sorethroat">Sore throat</label>
+						<!--{%endfor%} -->
+						<input type="checkbox" name="runningnose" id="runningnose" value="{{symptom}}">
+						<label id="runningnose">Running Nose</label>
+						<input type="checkbox" name="Asthma" id="Asthma" value="{{symptom}}">
+						<label id="Asthma">Asthma</label>
+						<!-- <br> -->
+						<!-- <input type="submit" onclick="myFunction()" value="Run analysis">-->
+						<!-- <br><br> -->
+						<!--<input type="text" id="analysis" size="50">-->
+					</div>
+					<button type="button" class="previous-btn">Previous</button>
+					<button type="button" class="submit-btn">Submit</button>
+				</div>
+			</div>
+
+			<div class="step step-4">
+				<div class="tab">
+					<h2>Thank you for taking out CovidMeter test!</h2>
+					<div class="symptoms">
+						<p>Your results show...</p>
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<!-- symptoms:
+	Breathing Problem,Fever,Dry Cough,Sore throat,Running Nose,Asthma,Chronic Lung Disease,Headache,
+		Heart Disease,Diabetes,Hyper Tension,Fatigue ,Gastrointestinal ,Abroad travel,Contact with COVID Patient,
+		Attended Large Gathering,Visited Public Exposed Places,Family working in Public Exposed Places,Wearing Masks,
+		Sanitization from Market-->
+
+		</form>
+
+	</div>
+	
+
+	<script src="CM_CovidMeter.js"></script>
+
+	
+	<script>function myFunction() {
+				var symptom = document.forms[0];
+				var txt = "";
+				var i;
+				for (i = 0; i < symptom.length; i++) {
+					if (symptom[i].checked) {
+						txt = txt + symptom[i].value + " ";
+					}
+				}
+				document.getElementById("analysis").value = "You have following symptoms: " + txt;
+			}
+	</script>
+
+
+
+</body>
+</html>
