@@ -2,8 +2,9 @@
 <html>
   <head>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body class="d-flex h-100 text-center text-white bg-info">
@@ -21,11 +22,33 @@
     <main class="px-3"></main>
       <h2>What COVID symptoms do you have?</h2>
       <p>
+        <div id="symptoms">
           <form action="/data" method="POST">
+
             {%for symptom, i in symptoms.items() %} 
-            <input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br/>
+              {% if loop.index >= 3 and loop.index <= 6 %}
+              <input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br/>
+              {% endif %}
             {%endfor%}
         <br>
+      </div>
+      <button type="button" class="next-btn" onclick="">Next</button>
+          <button type="button" class="previous-btn">Previous</button>
+          
+          <br><br>
+
+          <div id="symptoms">
+            
+  
+              {%for symptom, i in symptoms.items() %} 
+                {% if loop.index >= 6 and loop.index <= 12 %}
+                <input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br/>
+                {% endif %}
+              {%endfor%}
+          <br>
+        </div>
+
+
         <input type="submit" onclick="myFunction()" value="Run analysis">
         <br><br>
         <input type="text" id="analysis" size="50">
@@ -47,6 +70,17 @@
           }
           document.getElementById("analysis").value = "You have following symptoms: " + txt;
         }
+
+        function loadSymptoms(){
+        let button = $('.next-btn').clone();
+        var symptom = document.forms[0];
+        var items =  20;
+        var shown =  5;
+          var i;
+          for (i = 0; i < symptom.length; i++) {
+        $("#append").append(button.html())
+          }
+}
         </script>
 
 

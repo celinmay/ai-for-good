@@ -162,6 +162,12 @@ ul {
 .step.active{
     display: block;
 }
+.symptoms {
+    margin-top: 50px;
+    flex:1;
+    display: flex;
+    justify-content: space-evenly;
+}
 
 
 button.next-btn{
@@ -193,8 +199,4 @@ button.submit-btn {
     border: none;
     background-color: grey;
     cursor: pointer;
-}
-.symptoms {
-    display: inline-flex;
-    justify-content: space-evenly;
 }

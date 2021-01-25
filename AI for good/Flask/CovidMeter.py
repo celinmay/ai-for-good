@@ -19,7 +19,7 @@ def fetchSymptoms():
 @app.route("/", methods=['GET'])
 def index():
     symptoms = fetchSymptoms()
-    return render_template("index.html", symptoms = symptoms)
+    return render_template("CM_CovidMeter.html", symptoms = symptoms)
 
 
 @app.route("/data", methods=['POST', 'GET'])
@@ -29,6 +29,7 @@ def myFunction():
         symptomsList= request.form.getlist('symptom')
 
         #for s in symptomsList: 
+
         for i in range(len(symptomsList)):
     
             symptoms[symptomsList[i]] = 1 
@@ -38,12 +39,14 @@ def myFunction():
         with open('data.csv', 'a') as inFile:
             writer = csv.DictWriter(inFile, fieldnames=symptoms.keys(), lineterminator = '\n')
            # writer = csv.writer(inFile)
+
             writer.writerow(symptoms)
-            return render_template("index.html", symptoms = symptoms)
+            return render_template("CM_CovidMeter.html", symptoms = symptoms)
 
 @app.route("/results", methods=['GET'])
 def results():
    # X
+
     dataset = pd.read_csv('data.csv') # Enter dataset
     X = dataset.iloc[-1,:]
     X = np.array([X], dtype = np.float64)
