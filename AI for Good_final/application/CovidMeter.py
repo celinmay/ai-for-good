@@ -19,7 +19,7 @@ def fetchSymptoms():
 @app.route("/", methods=['GET'])
 def index():
     symptoms = fetchSymptoms()
-    return render_template("CM_CovidMeter.html", symptoms = symptoms)
+    return render_template("covidmeter.html", symptoms = symptoms)
 
 
 @app.route("/data", methods=['POST', 'GET'])
@@ -41,7 +41,7 @@ def myFunction():
            # writer = csv.writer(inFile)
 
             writer.writerow(symptoms)
-            return render_template("CM_CovidMeter.html", symptoms = symptoms)
+            return render_template("covidmeter.html", symptoms = symptoms)
 
 @app.route("/results", methods=['GET'])
 def results():

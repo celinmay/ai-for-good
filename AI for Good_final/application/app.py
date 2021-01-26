@@ -1,12 +1,12 @@
-from flask import Flask, jsonify, request, render_template
-#import tensorflow as tf 
-#from tensorflow import keras
-#from sklearn.preprocessing import LabelEncoder
-import numpy as np
-#from keras.models import load_model
-import pandas as pd
 import csv
 
+import tensorflow as tf 
+from tensorflow import keras
+from sklearn.preprocessing import LabelEncoder
+import numpy as np
+from keras.models import load_model
+import pandas as pd
+from flask import Flask, jsonify, render_template, request
 
 app = Flask(__name__)
 
@@ -29,12 +29,12 @@ def about():
 def disclaimer():
     return render_template("disclaimer.html")
 
-@app.route("/covidmeter", methods=['GET'])
+@app.route("/covidmeter.html", methods=['GET'])
 def covidmeter():
     symptoms = fetchSymptoms()
     return render_template("covidmeter.html", symptoms = symptoms)
 
-@app.route("/data", methods=['POST', 'GET'])
+@app.route("/data.html", methods=['POST', 'GET'])
 def myFunction():
     if request.method == 'POST':
         symptoms = fetchSymptoms()
@@ -53,7 +53,7 @@ def myFunction():
             writer.writerow(symptoms)
             return render_template("covidmeter.html", symptoms = symptoms)
 
-@app.route("/results", methods=['GET'])
+@app.route("/results.html", methods=['GET'])
 def results():
    # X
     dataset = pd.read_csv('data.csv') # Enter dataset

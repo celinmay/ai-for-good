@@ -4,7 +4,7 @@
 	
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='covidmeter.css') }}">
+	<link rel="stylesheet" type="text/css" href="../static/covidmeter.css">
 </head>
 
 <body>
@@ -19,9 +19,9 @@
 			<span></span>
 			<ul id="menu">
 				<a href="index.html"><li>Home</li></a>
-				<a href="covidmeter"><li>Try CovidMeter</li></a>
-				<a href="disclaimer"><li>Disclaimer</li></a>
-				<a href="about"><li>About Us</li></a>
+				<a href="covidmeter.html"><li>Try CovidMeter</li></a>
+				<a href="disclaimer.html"><li>Disclaimer</li></a>
+				<a href="about.html"><li>About Us</li></a>
 
 			</ul>
 		</div>
@@ -31,8 +31,8 @@
 	<div class="UpperBodyCovidMeter">
 
 
-		<form id="symptomschecker" action="/data" method="POST">
-
+		<form id="symptomschecker" action="../../data.csv" method="POST">
+		
 			<div class="step step-1 active">
 				<div class="tab">
 					<h2>How does it work?</h2>
@@ -49,7 +49,7 @@
 
 					<div class="symptoms">
 
-						{%for symptom, i in symptoms.items() %}
+						{%for i in symptoms.items()%}
 							{% if loop.index >= 0 and loop.index <= 3 %}
 								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
 							{% endif %}
@@ -182,7 +182,7 @@
 	
 
 
-  <script src="{{url_for('static', filename='covidmeter.js')}}"></script>
+  <script src="../static/covidmeter.js"></script>
 
 	
 	<script>
