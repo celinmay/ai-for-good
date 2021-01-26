@@ -1,12 +1,12 @@
-import csv
+from flask import Flask, jsonify, render_template, request
 
 import tensorflow as tf 
 from tensorflow import keras
-from sklearn.preprocessing import LabelEncoder
+#from sklearn.preprocessing import LabelEncoder
 import numpy as np
 from keras.models import load_model
 import pandas as pd
-from flask import Flask, jsonify, render_template, request
+import csv
 
 app = Flask(__name__)
 
