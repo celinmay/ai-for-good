@@ -1,9 +1,9 @@
 from flask import Flask, jsonify, request, render_template
-import tensorflow as tf 
-from tensorflow import keras
-from sklearn.preprocessing import LabelEncoder
+#import tensorflow as tf 
+#from tensorflow import keras
+#from sklearn.preprocessing import LabelEncoder
 import numpy as np
-from keras.models import load_model
+#from keras.models import load_model
 import pandas as pd
 import csv
 
