@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='covidmeter.css') }}">
+</head>
+
+<body>
+	<div class="CM_Header_CovidMeter">
+		<p id="CM_Header_CovidMeter_P">CovidMeter by AI for Good</p>
+	</div>
+	<nav role="navigation">
+		<div id="menuToggle">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<span></span>
+			<ul id="menu">
+				<a href="index.html"><li>Home</li></a>
+				<a href="covidmeter"><li>Try CovidMeter</li></a>
+				<a href="disclaimer"><li>Disclaimer</li></a>
+				<a href="about"><li>About Us</li></a>
+
+			</ul>
+		</div>
+	</nav>
+
+	<h1>What COVID symptoms do you have?</h1>
+	<div class="UpperBodyCovidMeter">
+
+
+		<form id="symptomschecker" action="/data" method="POST">
+
+			<div class="step step-1 active">
+				<div class="tab">
+					<h2>How does it work?</h2>
+					<p>Our model works on a machine learning model which has been fed with X datasets to calculate the chance of a person being tested positive with a certain combination of symptoms.</p>
+					<p>By clicking next you confirm that you read and accept the disclaimer</p>
+					<button type="button" class="next-btn">Next</button>
+				</div>
+			</div>
+
+			<div class="step step-2">
+				<h2>Please tick syptoms</h2>
+				<div class="tab">
+
+
+					<div class="symptoms">
+
+						{%for symptom, i in symptoms.items() %}
+							{% if loop.index >= 0 and loop.index <= 3 %}
+								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
+							{% endif %}
+						{%endfor%}
+
+
+					</div>
+
+					<button type="button" class="next-btn">Next</button>
+					<button type="button" class="previous-btn">Previous</button>
+
+				</div>
+			</div>
+
+			<div class="step step-3">
+				<div class="tab">
+					<h2>Please tick syptoms</h2>
+					<div class="symptoms">
+
+						{%for symptom, i in symptoms.items() %}
+							{% if loop.index >= 4 and loop.index <= 7 %}
+								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
+							{% endif %}
+						{%endfor%}
+
+					</div>
+					<button type="button" class="previous-btn">Previous</button>
+					<button type="button" class="next-btn">Next</button>
+				</div>
+			</div>
+
+			<div class="step step-4">
+				<div class="tab">
+					<h2>Please tick syptoms</h2>
+					<div class="symptoms">
+
+						{%for symptom, i in symptoms.items() %}
+							{% if loop.index >= 8 and loop.index <= 11 %}
+								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
+							{% endif %}
+						{%endfor%}
+
+					</div>
+					<button type="button" class="previous-btn">Previous</button>
+					<button type="button" class="next-btn">Next</button>
+				</div>
+			</div>
+
+			<div class="step step-5">
+				<div class="tab">
+					<h2>Please tick syptoms</h2>
+					<div class="symptoms">
+
+						{%for symptom, i in symptoms.items() %}
+							{% if loop.index >= 12 and loop.index <= 15 %}
+								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
+							{% endif %}
+						{%endfor%}
+
+					</div>
+					<button type="button" class="previous-btn">Previous</button>
+					<button type="button" class="next-btn">Next</button>
+				</div>
+			</div>
+
+			<div class="step step-6">
+				<div class="tab">
+					<h2>Please tick syptoms</h2>
+					<div class="symptoms">
+
+						{%for symptom, i in symptoms.items() %}
+							{% if loop.index >= 16 and loop.index <= 20 %}
+								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
+							{% endif %}
+						{%endfor%}
+
+					</div>
+					<button type="button" class="previous-btn">Previous</button>
+					<button type="button" class="submit-btn">Submit</button>
+				</div>
+			</div>
+
+			<div class="step step-7">
+				<div class="tab">
+					<h2>Thank you for taking out CovidMeter test!</h2>
+					<div class="results">
+						<p>Based on your results the chances of a positive Covid-19 test are:</p>
+
+						{{ y_pred }}
+
+						<!-- insert the result percentage and include if-else statement-->
+						<!-- if results are above X display "changes are considered high" or "chances are considered low"-->
+
+						<br>Independently of the above stated results, we advise everyone experiencing sympoms of Covid-19 to get tested at an official health institution.
+						<br><label for="countries">Choose a country to get information about public health institutions:</label>
+
+						<select name="countries" id="countries">
+							<option>Choose counry</option>
+							<option value="https://www.who.int/emergencies/diseases/novel-coronavirus-2019?gclid=Cj0KCQiAkuP9BRCkARIsAKGLE8WdQr0zX2ctJvaM5XECIJRUAO-tdPP2VDtxieW-iHhPxQ0iIhVFRUAaAgQ8EALw_wcB">International WHO</option>
+							<option value="https://www.sundhed.dk/borger/corona/">Denmark</option>
+							<option value="https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates">Finland</option>
+							<option value="https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/">Sweden</option>
+							<option value="https://www.helsenorge.no/koronavirus/">Norway</option>
+							<option value="https://www.covid.is/">Iceland</option>
+							<option value="https://www.terviseamet.ee/en/covid19">Estonia</option>
+							<option value="https://www.vm.gov.lv/en/ministry/novel_coronavirus_covid19_advice_for_the_public1/">Latvia</option>
+							<option value="https://koronastop.lrv.lt/">Lithuania</option>
+							<option value="https://www.gov.pl/web/coronavirus">Poland</option>
+							<option value="https://www.bundesgesundheitsministerium.de/coronavirus.html">Germany</option>
+							<option value="https://www.rivm.nl/en/novel-coronavirus-covid-19">Netherlands</option>
+							<option value="https://www.info-coronavirus.be/">Belgium</option>
+							<option value="https://covid19.public.lu/fr.html">Luxembourg</option>
+							<option value="https://www.gov.uk/guidance/coronavirus-covid-19-information-for-the-public">United Kingdom</option>
+							<option value="https://www.gov.ie/en/campaigns/c36c85-covid-19-coronavirus/">Ireland</option>
+						</select>
+						<script type="text/javascript">
+							var urlmenu = document.getElementById('countries');
+							urlmenu.onchange = function () {
+								window.open(this.options[this.selectedIndex].value);
+							};
+						</script>
+					</div>
+				</div>
+			</div>
+
+
+		</form>
+
+	</div>
+	
+
+
+  <script src="{{url_for('static', filename='covidmeter.js')}}"></script>
+
+	
+	<script>
+		function myFunction() {
+				var symptom = document.forms[0];
+				var txt = "";
+				var i;
+				for (i = 0; i < symptom.length; i++) {
+						if (symptom[i].checked) {
+							txt = txt + symptom[i].value + " ";
+						}
+				}
+				document.getElementById("analysis").value = "You have following symptoms: " + txt;
+		}	
+	
+		function loadSymptoms() {
+			let button = $('.next-btn').clone();
+			var symptom = document.forms[0];
+			var items = 20;
+			var shown = 5;
+			var i;
+			for (i = 0; i < symptom.length; i++) {
+				$("#append").append(button.html())
+			}
+        }
+	</script>
+
+
+
+</body>
+</html>

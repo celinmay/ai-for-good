@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Meter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+</head>
+
+<body>
+<div class="CM_Header">
+    <p id="CM_Header_P">CovidMeter by AI for Good</p>
+</div>
+<nav role="navigation">
+  <div id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+      <a href="index.html"><li>Home</li></a>
+      <a href="covidmeter"><li>Try CovidMeter</li></a>
+      <a href="disclaimer"><li>Disclaimer</li></a>
+      <a href="about"><li>About Us</li></a>
+
+    </ul>
+  </div>
+</nav>
+    
+ <h1>Covid Meter</h1>
+
+<div>
+    <div class="UpperBody">
+        <h2>Try our CovidMeter</h2>
+        
+
+        <p>
+            And see in a seconds how likely the chances are for you to test positiv on Covid-19!
+            </p>
+
+        <a href="covidmeter"><button type="button" id="ButtonTryItNow">Try it now</button></a>
+</div>
+    <div class="LowerBody">
+        <div class="CovidMeter">
+            <h2>How does it work?</h2>
+            <p>
+                Our model works on the basis of a database retrieved from Kaggle. The database has been published by ...
+            </p>
+        </div>
+
+       
+        <div class="CovidMeter">
+
+            <h2>Who are we?</h2>
+            <p>
+                We, creators of CovidMeter are participants of the TechLabs, and have created this solution as part of our learning.
+            </p>
+        </div>
+    </div>
+
+    
+
+</div>
+
+</body>
+
+</html>

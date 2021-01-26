@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, render_template
+import tensorflow as tf 
 from tensorflow import keras
 from sklearn.preprocessing import LabelEncoder
-import tensorflow as tf 
 import numpy as np
 from keras.models import load_model
 import pandas as pd
@@ -21,6 +21,18 @@ def index():
     symptoms = fetchSymptoms()
     return render_template("index.html", symptoms = symptoms)
 
+@app.route("/about", methods=['GET'])
+def about():
+    return render_template("about.html")
+
+@app.route("/disclaimer", methods=['GET'])
+def disclaimer():
+    return render_template("disclaimer.html")
+
+@app.route("/covidmeter", methods=['GET'])
+def covidmeter():
+    symptoms = fetchSymptoms()
+    return render_template("covidmeter.html", symptoms = symptoms)
 
 @app.route("/data", methods=['POST', 'GET'])
 def myFunction():
@@ -39,7 +51,7 @@ def myFunction():
             writer = csv.DictWriter(inFile, fieldnames=symptoms.keys(), lineterminator = '\n')
            # writer = csv.writer(inFile)
             writer.writerow(symptoms)
-            return render_template("index.html", symptoms = symptoms)
+            return render_template("covidmeter.html", symptoms = symptoms)
 
 @app.route("/results", methods=['GET'])
 def results():
