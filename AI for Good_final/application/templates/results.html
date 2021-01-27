@@ -29,11 +29,11 @@
     
     <h1>What COVID symptoms do you have?</h1>
 	<div class="UpperBodyCovidMeter">
-<div class="step step-7">
+<div class="step step-7 active">
     <div class="tab">
-        <h2>Thank you for taking out CovidMeter test!</h2>
+        <h2>Thank you for taking our CovidMeter test!</h2>
         <div class="results">
-            <p>Based on your results the chances of a positive Covid-19 test are:</p>
+            <p>Based on your results the risk of a positive Covid-19 test are:</p>
 
             {{ y_pred }}
 
@@ -44,7 +44,7 @@
             <br><label for="countries">Choose a country to get information about public health institutions:</label>
 
             <select name="countries" id="countries">
-                <option>Choose counry</option>
+                <option>Choose country</option>
                 <option value="https://www.who.int/emergencies/diseases/novel-coronavirus-2019?gclid=Cj0KCQiAkuP9BRCkARIsAKGLE8WdQr0zX2ctJvaM5XECIJRUAO-tdPP2VDtxieW-iHhPxQ0iIhVFRUAaAgQ8EALw_wcB">International WHO</option>
                 <option value="https://www.sundhed.dk/borger/corona/">Denmark</option>
                 <option value="https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates">Finland</option>

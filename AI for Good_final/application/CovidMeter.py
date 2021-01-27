@@ -43,27 +43,25 @@ def myFunction():
             writer.writerow(symptoms)
             return render_template("covidmeter.html", symptoms = symptoms)
 
-@app.route("/results", methods=['GET'])
+@app.route("/results.html", methods=['GET'])
 def results():
-   # X
-
-    dataset = pd.read_csv('data.csv') # Enter dataset
+    # Data
+    dataset = pd.read_csv('data.csv')
     X = dataset.iloc[-1,:]
     X = np.array([X], dtype = np.float64)
     X = np.reshape(X, (-1,20))
 
-# Load model 
+    # Load model 
     loaded_ann = keras.models.load_model('Covid_model')
-
-#Trying it out
     y_pred = loaded_ann.predict(X)
 
-    print(y_pred)
-  
-    return str(y_pred[0])
+    #Predict 
+    
+    #return str(y_pred[0])
+    return render_template("results.html", y_pred = str(y_pred[0][0]*100)+'%')
 
 
 
 #Execute server
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=False)

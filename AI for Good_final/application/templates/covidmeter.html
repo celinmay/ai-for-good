@@ -31,26 +31,26 @@
 	<div class="UpperBodyCovidMeter">
 
 
-		<form id="symptomschecker" action="../../data.csv" method="POST">
+		<form id="symptomschecker" action="/data" method="POST">
 		
 			<div class="step step-1 active">
 				<div class="tab">
 					<h2>How does it work?</h2>
-					<p>Our model works on a machine learning model which has been fed with X datasets to calculate the chance of a person being tested positive with a certain combination of symptoms.</p>
-					<p>By clicking next you confirm that you read and accept the disclaimer</p>
+					<p>Our model is built on a machine learning model which has been fed with 10,000 patients data to calculate the chance of a person being tested positive with a certain combination of symptoms.</p>
+					<p>By clicking next you confirm that you have read and accept the disclaimer</p>
 					<button type="button" class="next-btn">Next</button>
 				</div>
 			</div>
 
 			<div class="step step-2">
-				<h2>Please tick syptoms</h2>
+				<h2>Please tick symptoms</h2>
 				<div class="tab">
 
 
 					<div class="symptoms">
 
-						{%for i in symptoms.items()%}
-							{% if loop.index >= 0 and loop.index <= 3 %}
+						{%for symptom, i in symptoms.items()%}
+							{% if loop.index >= 0 and loop.index <= 4 %}
 								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
 							{% endif %}
 						{%endfor%}
@@ -66,11 +66,11 @@
 
 			<div class="step step-3">
 				<div class="tab">
-					<h2>Please tick syptoms</h2>
+					<h2>Please tick symptoms</h2>
 					<div class="symptoms">
 
 						{%for symptom, i in symptoms.items() %}
-							{% if loop.index >= 4 and loop.index <= 7 %}
+							{% if loop.index >= 5 and loop.index <= 8 %}
 								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
 							{% endif %}
 						{%endfor%}
@@ -83,11 +83,11 @@
 
 			<div class="step step-4">
 				<div class="tab">
-					<h2>Please tick syptoms</h2>
+					<h2>Please tick symptoms</h2>
 					<div class="symptoms">
 
 						{%for symptom, i in symptoms.items() %}
-							{% if loop.index >= 8 and loop.index <= 11 %}
+							{% if loop.index >= 9 and loop.index <= 12 %}
 								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
 							{% endif %}
 						{%endfor%}
@@ -100,11 +100,11 @@
 
 			<div class="step step-5">
 				<div class="tab">
-					<h2>Please tick syptoms</h2>
+					<h2>Please tick symptoms</h2>
 					<div class="symptoms">
 
 						{%for symptom, i in symptoms.items() %}
-							{% if loop.index >= 12 and loop.index <= 15 %}
+							{% if loop.index >= 13 and loop.index <= 16 %}
 								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
 							{% endif %}
 						{%endfor%}
@@ -117,28 +117,29 @@
 
 			<div class="step step-6">
 				<div class="tab">
-					<h2>Please tick syptoms</h2>
+					<h2>Please tick symptoms</h2>
 					<div class="symptoms">
 
 						{%for symptom, i in symptoms.items() %}
-							{% if loop.index >= 16 and loop.index <= 20 %}
+							{% if loop.index >= 17 and loop.index <= 21 %}
 								<input type="checkbox" name="symptom" value="{{symptom}}"> {{ symptom }}<br />
 							{% endif %}
 						{%endfor%}
 
 					</div>
 					<button type="button" class="previous-btn">Previous</button>
-					<a href="results.html"><button type="button" class="submit-btn">Submit</button></a>
+					
+					<a href="results.html"><button type="button" onclick="myFunction()" class="submit-btn">Submit</button></a>
 				</div>
 			</div>
 
 			<div class="step step-7">
 				<div class="tab">
-					<h2>Thank you for taking out CovidMeter test!</h2>
+					<h2>Thank you for taking our CovidMeter test!</h2>
 					<div class="results">
 						<p>Based on your results the chances of a positive Covid-19 test are:</p>
 
-						{{ y_pred }}
+
 
 						<!-- insert the result percentage and include if-else statement-->
 						<!-- if results are above X display "changes are considered high" or "chances are considered low"-->
