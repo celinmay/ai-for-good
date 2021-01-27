@@ -2,4 +2,4 @@
 
 Hello. 
 
-We will be making a COVID-19 test-advicer. 
+We made a COVID-19 test advicer. 
